@@ -21,12 +21,9 @@ namespace WebScrapper
 
             foreach (var item in HeaderNames)
             {
-                
-                var aa = item.InnerText;
                 var urlapto = item.SelectSingleNode("//div[@class='card-title']");
-                var cha = urlapto.ChildNodes["a"];
-                var aptoUrl = $"{_SourceHeader}{cha.GetAttributeValue("href", string.Empty)}";
-                var titlecontainer = item.SelectSingleNode("//a[@class='link-7']");
+                var chNode = urlapto.ChildNodes["a"];
+                var aptoUrl = $"{_SourceHeader}{chNode.GetAttributeValue("href", string.Empty)}";
 
                 new TelegramBot().SendMessage("Encontré una nueva propiedad: \n" + aptoUrl);
                 return;
